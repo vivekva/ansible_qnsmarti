@@ -1,0 +1,110 @@
+---
+# tasks file for qnsmarti
+- name: Update ubuntu
+  apt:
+    update_cache: yes
+- name: Upgrade apt packages
+  apt:
+    upgrade: dist
+    force_apt_get: yes
+    autoremove: yes
+    autoclean: yes
+- name: Install default-jre
+  apt:
+    name: default-jre
+    state: present
+- name: Install default-jdk
+  apt:
+    name: default-jdk
+    state: present
+- name: Create tomee group
+  group:
+    name: tomee
+    state: present
+- name: Create tomee user
+  user:
+    name: tomee
+    shell: /bin/false
+    group: tomee
+    home: /opt/tomee
+    state: present
+    #- name: Download Apache TomEE distribution
+    #get_url:
+    # url: https://dlcdn.apache.org/tomee/tomee-8.0.14/apache-tomee-8.0.14-plume.tar.gz
+    # dest: /tmp/apache-tomee-8.0.14-plume.tar.gz
+- name: Extract Apache TomEE distribution
+  unarchive:
+    src: /home/ubuntu/apache-tomee-8.0.14-plume.tar.gz
+    dest: /opt/tomee
+    remote_src: yes
+    extra_opts: --strip-components=1
+- name: Create /opt/tomee directory
+  file:
+    path: /opt/tomee
+    state: directory
+- name: Set group ownership to tomee for /opt/tomee/ directory
+  file:
+    path: /opt/tomee/
+    state: directory
+    recurse: yes
+    group: tomee
+- name: Set group-readable permissions for conf directory
+  file:
+    path: /opt/tomee/conf
+    recurse: yes
+    mode: g+r
+- name: Set group-executable permissions for conf directory
+  file:
+    path: /opt/tomee/conf
+    mode: g+x
+- name: Set ownership for specific directories
+  file:
+    path: "{{ item }}"
+    recurse: yes
+    owner: tomee
+  loop:
+    - /opt/tomee/webapps
+    - /opt/tomee/work
+    - /opt/tomee/temp
+    - /opt/tomee/logs
+- name: create tomee.service file
+  file: 
+    path: /etc/systemd/system/tomee.service
+    state: touch
+- name: Add content to /etc/systemd/system/tomee.service
+  template: 
+    src: tomee-service.j2
+    dest: /etc/systemd/system/tomee.service
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
+- name: Enable tomee.service
+  systemd:
+    name: tomee.service
+    enabled: yes
+
+- name: Add content to /opt/tomee/conf/tomcat-users.xml
+  template: 
+    src: tomcat-users-xml.j2
+    dest: /opt/tomee/conf/tomcat-users.xml
+- name: Add content to /opt/tomee/webapps/host-manager/META-INF/context.xml
+  template:
+    src: host-manager-context-xml.j2
+    dest: /opt/tomee/webapps/host-manager/META-INF/context.xml
+- name: Add content to /opt/tomee/webapps/manager/META-INF/context.xml
+  template:
+    src: manager-context-xml.j2
+    dest: /opt/tomee/webapps/manager/META-INF/context.xml
+
+- name: Restart tomee.service
+  systemd:
+    name: tomee.service
+    state: restarted
+- name: Create /opt/tomee/uploads directory
+  file:
+    path: /opt/tomee/uploads
+    state: directory
+    mode: '0775'
+    owner: tomee
+    group: tomee
