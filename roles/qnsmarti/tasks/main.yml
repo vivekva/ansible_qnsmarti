@@ -96,6 +96,14 @@
   template:
     src: manager-context-xml.j2
     dest: /opt/tomee/webapps/manager/META-INF/context.xml
+- name: Add content to /opt/tomee/conf/context.xml
+  template:
+    src: context-xml.j2
+    dest: /opt/tomee/conf/context.xml
+- name: Add content to 
+  template: 
+    src: server-xml.j2
+    dest: /opt/tomee/conf/server.xml
 
 - name: Restart tomee.service
   systemd:
