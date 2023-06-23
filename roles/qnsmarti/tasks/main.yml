@@ -108,3 +108,33 @@
     mode: '0775'
     owner: tomee
     group: tomee
+
+- name: Install net-tools package
+  apt:
+    name: net-tools
+    state: present
+- name: Add content to /opt/lampp/etc/extra/httpd-xampp.conf
+  template: 
+    src: httpd-xampp-conf.j2
+    dest: /opt/lampp/etc/extra/httpd-xampp.conf
+- name: Stop XAMPP
+  command: /opt/lampp/lampp stop
+
+- name: Start XAMPP
+  command: /opt/lampp/lampp start
+
+- name: Create .htpasswd file for secure XAMPP access
+  expect:
+    command: /opt/lampp/bin/htpasswd -c /opt/lampp/apache2/.htpasswd admin
+    responses:
+      "New password:": "admin123"
+      "Re-type new password:": "admin123"
+- name: Add content to 
+  template: 
+    src: httpd-conf.j2
+    dest: /opt/lampp/etc/httpd.conf
+- name: Stop XAMPP
+  command: /opt/lampp/lampp stop
+
+- name: Start XAMPP
+  command: /opt/lampp/lampp start
