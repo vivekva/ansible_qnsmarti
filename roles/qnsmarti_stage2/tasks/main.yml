@@ -1,0 +1,6 @@
+---
+# tasks file for qnsmarti_stage2
+- name: Add content to /opt/lampp/phpmyadmin/config.inc.php
+  template:
+    src: xampp-config-inc-php.j2
+    dest: /opt/lampp/phpmyadmin/config.inc.php
