@@ -12,11 +12,14 @@
   template:
     src: root-xml.j2
     dest: /opt/tomee/conf/Catalina/localhost/ROOT.xml
-- name: Move app folder from default location to /opt/tomee
-  file:
-    src: /opt/tomee/webapps/ultima-2.0.17-12-2022-1
-    dest: /opt/tomee/QnLive
-    state: moved
+- name: stat of war file in webapps
+  stat: 
+    path: /opt/tomee/webapps/ultima-2.0.17-12-2022-1
+  register: war_status
+
+- name: Move war to /opt/tomee
+  command: mv /opt/tomee/webapps/ultima-2.0.17-12-2022-1 /opt/tomee/QnLive
+  when: war_status.stat.exists
 - name: Remove war file
   file:
     path: /opt/tomee/webapps/ultima.war
