@@ -4,3 +4,20 @@
   template:
     src: xampp-config-inc-php.j2
     dest: /opt/lampp/phpmyadmin/config.inc.php
+- name: Move app folder from default location to /opt/tomee
+  file:
+    src: /opt/tomee/webapps/ultima-2.0.17-12-2022-1
+    dest: /opt/tomee/QnLive
+    state: moved
+- name: Remove war file
+  file:
+    path: /opt/tomee/webapps/ultima.war
+    state: absent
+- name: Sleep for 5 seconds
+  pause:
+    seconds: 5
+- name: Restart tomee service
+  systemd:
+    name: tomee.service
+    state: restarted
+
