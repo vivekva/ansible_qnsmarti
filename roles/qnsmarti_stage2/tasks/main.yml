@@ -4,6 +4,14 @@
   template:
     src: xampp-config-inc-php.j2
     dest: /opt/lampp/phpmyadmin/config.inc.php
+- name: Create /opt/tomee/conf/Catalina/localhost/ROOT.xml
+  file:
+    path: /opt/tomee/conf/Catalina/localhost/ROOT.xml
+    state: touch
+- name: add content  to ROOT.xml
+  template:
+    src: root-xml.j2
+    dest: /opt/tomee/conf/Catalina/localhost/ROOT.xml
 - name: Move app folder from default location to /opt/tomee
   file:
     src: /opt/tomee/webapps/ultima-2.0.17-12-2022-1
