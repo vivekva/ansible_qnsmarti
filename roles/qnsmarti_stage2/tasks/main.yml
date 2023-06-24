@@ -22,7 +22,7 @@
   when: war_status.stat.exists
 - name: Remove war file
   file:
-    path: /opt/tomee/webapps/ultima.war
+    path: /opt/tomee/webapps/ultima-2.0.17-12-2022-1.war
     state: absent
 - name: Sleep for 5 seconds
   pause:
