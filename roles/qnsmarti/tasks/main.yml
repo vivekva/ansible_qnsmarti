@@ -146,3 +146,10 @@
 
 - name: Start XAMPP
   command: /opt/lampp/lampp start
+
+- name: Shutdown tomee
+  ansible.builtin.command:
+    cmd: sh /opt/tomee/bin/shutdown.sh
+- name: Start tomee
+  ansible.builtin.command:
+    cmd: sh /opt/tomee/bin/startup.sh

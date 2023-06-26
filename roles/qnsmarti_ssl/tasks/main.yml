@@ -1,0 +1,53 @@
+---
+# tasks file for qnsmarti_ssl
+- name: Install software-properties-common
+  ansible.builtin.apt:
+    name: software-properties-common
+    state: present
+- name: Update package lists
+  ansible.builtin.apt:
+    update_cache: yes
+- name: Install certbot
+  ansible.builtin.apt:
+    name: certbot
+    state: present
+- name: Stop XAMPP server
+  ansible.builtin.command:
+    cmd: /opt/lampp/lampp stop
+- name: Check if JKS file exists
+  ansible.builtin.stat:
+    path: /opt/tomee/conf/qntech.ipsrawssaa.shop.jks
+  register: jks_file
+- name: Obtain SSL/TLS certificate with certbot
+  ansible.builtin.command:
+    cmd:  certbot certonly --standalone -d qntech.ipsrawssaa.shop --non-interactive --agree-tos -m vivek.va@ipsrsolutions.com
+  when: not jks_file.stat.exists
+- name: Export SSL/TLS certificate and private key
+  expect:
+    command: openssl pkcs12 -export -out /tmp/qntech.ipsrawssaa.shop_fullchain_and_key.p12 -in /etc/letsencrypt/live/qntech.ipsrawssaa.shop/fullchain.pem -inkey /etc/letsencrypt/live/qntech.ipsrawssaa.shop/privkey.pem -name tomcat
+    responses:
+      "Enter Export Password:": password1234
+      "Verifying - Enter Export Password:": password1234
+  when: not jks_file.stat.exists
+
+- name: Import SSL/TLS certificate and private key into keystore
+  ansible.builtin.command:
+    cmd: keytool -importkeystore -deststorepass password1234 -destkeypass password1234 -destkeystore /opt/tomee/conf/qntech.ipsrawssaa.shop.jks -srckeystore /tmp/qntech.ipsrawssaa.shop_fullchain_and_key.p12 -srcstoretype PKCS12 -srcstorepass password1234 -alias tomcat
+  when: not jks_file.stat.exists
+- name: Add content to /opt/tomee/conf/server.xml
+  template:
+    src: server-xml.j2
+    dest: /opt/tomee/conf/server.xml
+- name: Start XAMPP server
+  ansible.builtin.command:
+    cmd: /opt/lampp/lampp start
+- name: Shut down TomEE server
+  ansible.builtin.command:
+    cmd: /opt/tomee/bin/shutdown.sh
+
+- name: Start TomEE server
+  ansible.builtin.command:
+    cmd: /opt/tomee/bin/startup.sh
+
+
+

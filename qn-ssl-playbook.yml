@@ -1,0 +1,5 @@
+---
+- name: Installation of Qnsmarti server
+  hosts: localhost
+  roles:
+    - qnsmarti_ssl 

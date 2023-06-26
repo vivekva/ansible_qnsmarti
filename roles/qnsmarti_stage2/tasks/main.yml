@@ -34,5 +34,9 @@
   ansible.builtin.command:
     cmd: sh /opt/tomee/bin/startup.sh
 
+- name: Sleep for 5 seconds
+  pause:
+    seconds: 15
+
    
 
