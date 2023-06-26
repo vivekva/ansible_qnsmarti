@@ -34,7 +34,7 @@
     # dest: /tmp/apache-tomee-8.0.14-plume.tar.gz
 - name: Extract Apache TomEE distribution
   unarchive:
-    src: /home/ubuntu/apache-tomee-8.0.14-plume.tar.gz
+    src: "{{ tomee_zip }}"
     dest: /opt/tomee
     remote_src: yes
     extra_opts: --strip-components=1

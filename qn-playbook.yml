@@ -1,5 +1,7 @@
 ---
 - name: Installation of Qnsmarti server
   hosts: localhost
+  vars_files:
+    - var_file.yml 
   roles:
     - qnsmarti 

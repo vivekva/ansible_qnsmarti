@@ -1,0 +1,6 @@
+tomee_zip: /home/ubuntu/apache-tomee-8.0.14-plume.tar.gz
+manager_username: admin
+manager_password: admin123
+db_user: tomee-user
+db_password: tomee@123
+dB_name: qnsmart_i_db

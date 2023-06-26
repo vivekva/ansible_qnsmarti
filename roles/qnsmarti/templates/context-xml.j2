@@ -30,6 +30,6 @@
     -->
     <Resource name="jdbc/qnsmarti" auth="Container" type="javax.sql.DataSource"
                maxTotal="-1" maxIdle="-1" maxWaitMillis="-1" connectionProperties="useUnicode=yes;characterEncoding=UTF-8;serverTimezone=IST"
-               username="tomee-user" password="tomee@123" driverClassName="com.mysql.jdbc.Driver"
-               url="jdbc:mysql://127.0.0.1:3306/qnsmart_i_db"/>
+	       username="{{ db_user }}" password="{{ db_password }}" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://127.0.0.1:3306/{{ dB_name }}"/>
 </Context>
