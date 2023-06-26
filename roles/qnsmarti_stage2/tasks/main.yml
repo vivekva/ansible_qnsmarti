@@ -1,9 +1,9 @@
 ---
 # tasks file for qnsmarti_stage2
-- name: Add content to /opt/lampp/phpmyadmin/config.inc.php
-  template:
-    src: xampp-config-inc-php.j2
-    dest: /opt/lampp/phpmyadmin/config.inc.php
+#- name: Add content to /opt/lampp/phpmyadmin/config.inc.php
+#  template:
+#    src: xampp-config-inc-php.j2
+#    dest: /opt/lampp/phpmyadmin/config.inc.php
 - name: Create /opt/tomee/conf/Catalina/localhost/ROOT.xml
   file:
     path: /opt/tomee/conf/Catalina/localhost/ROOT.xml
@@ -27,8 +27,12 @@
 - name: Sleep for 5 seconds
   pause:
     seconds: 5
-- name: Restart tomee service
-  systemd:
-    name: tomee.service
-    state: restarted
+- name: Shutdown tomee
+  ansible.builtin.command:
+    cmd: sh /opt/tomee/bin/shutdown.sh
+- name: Start tomee
+  ansible.builtin.command:
+    cmd: sh /opt/tomee/bin/startup.sh
+
+   
 
