@@ -3,9 +3,14 @@
 ```
 apt-add-repository ppa:ansible/ansible
 ```
-apt update <br />
-apt install ansible <br />
-ansible --version <br />
+```
+apt update
+```
+```
+apt install ansible
+```
+ansible --version
+```
 cat /etc/ansible/ansible.cfg <br />
  wget https://qnsmarti.s3.ap-south-1.amazonaws.com/xampp-linux-x64-8.1.12-0-installer.run <br />
  wget https://qnsmarti.s3.ap-south-1.amazonaws.com/ultima-2.0.17-12-2022-1.war <br />
