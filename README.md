@@ -35,15 +35,29 @@ ansible --version
 ### change variables in the  `var_file.yml` according to client
 
 ## run playbook 
-ansible-playbook qn-playbook.yml <br />
+```
+ansible-playbook qn-playbook.yml
+````
+
 check xampp using public ip <br />
 check tomee with ip:8080 <br />
-copy war file to /opt/tomee/webapps <br />
-create db , user via phpmyadmin ( same as in the var file ) <br />
+create `database`  `username` and it's `password`  via phpmyadmin ( same as in the var file ) <br />
 import database - ask developer <br />
+copy war file to `/opt/tomee/webapps` <br />
+check app with ip:8080/buildname
 
-## run playbook
-ansible-playbook qn-stage2-playbook.yml <br />
+### restart tomee service if needed
+```
+sh /opt/tomee/bin/shutdown.sh
+```
+```
+sh /opt/tomee/bin/startup.sh
+```
+
+## run playbook 
+```
+ansible-playbook qn-stage2-playbook.yml
+```
 
 ## run playboook <br /> 
 #ansible-playbook qn-ssl-playbook.yml <br />
