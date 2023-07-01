@@ -14,17 +14,22 @@ ansible --version
 ```
 
 ## Download files from S3
+
 ```
  wget https://qnsmarti.s3.ap-south-1.amazonaws.com/xampp-linux-x64-8.1.12-0-installer.run
 ```
 ```
  wget https://qnsmarti.s3.ap-south-1.amazonaws.com/ultima-2.0.17-12-2022-1.war
 ```
+```
  wget https://qnsmarti.s3.ap-south-1.amazonaws.com/apache-tomee-8.0.14-plume.tar.gz
 ```
 
+## Install XAMPP Manually
 
-./xampp-linux-x64-8.1.12-0-installer.run <br />
+```
+./xampp-linux-x64-8.1.12-0-installer.run
+```
 ### pull git 
 
 change variables var_file.yml according to client <br />
