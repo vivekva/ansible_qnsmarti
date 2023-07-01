@@ -30,9 +30,9 @@ ansible --version
 ```
 ./xampp-linux-x64-8.1.12-0-installer.run
 ```
-### pull git 
+## pull this git project to server
 
-change variables var_file.yml according to client <br />
+## change variables in the  `var_file.yml` according to client
 
 ## run playbook 
 ansible-playbook qn-playbook.yml <br />
