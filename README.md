@@ -1,6 +1,8 @@
 ## ansible_qnsmarti - Prerequisites
 
-apt-add-repository ppa:ansible/ansible <br />
+```
+apt-add-repository ppa:ansible/ansible
+```
 apt update <br />
 apt install ansible <br />
 ansible --version <br />
