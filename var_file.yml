@@ -1,4 +1,4 @@
-tomee_zip: /home/ubuntu/apache-tomee-8.0.14-plume.tar.gz
+tomee_zip: /root/apache-tomee-8.0.14-plume.tar.gz
 manager_username: admin
 manager_password: admin123
 db_user: tomee-user
