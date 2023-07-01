@@ -13,7 +13,7 @@ pull git <br />
 
 change variables var_file.yml according to client <br />
 
-run playbook <br />
+## run playbook 
 #ansible-playbook qn-playbook.yml <br />
 check xampp using public ip <br />
 check tomee with ip:8080 <br />
