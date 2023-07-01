@@ -32,7 +32,7 @@ ansible --version
 ```
 ## pull this git project to server
 
-## change variables in the  `var_file.yml` according to client
+### change variables in the  `var_file.yml` according to client
 
 ## run playbook 
 ansible-playbook qn-playbook.yml <br />
