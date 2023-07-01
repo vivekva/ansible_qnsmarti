@@ -81,7 +81,7 @@
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
                 maxThreads="150" SSLEnabled="true"
                 compression="on" scheme="https" secure="true"
-                keystoreFile="conf/qntech.ipsrawssaa.shop.jks"
+                keystoreFile="conf/{{ domain }}.jks"
                 keystorePass="password1234"
                 SSLVerifyClient="none" SSLProtocol="TLSv1.2"
     />

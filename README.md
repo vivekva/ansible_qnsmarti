@@ -19,6 +19,7 @@ check xampp using public ip
 check tomee with ip:8080
 copy war file to /opt/tomee/webapps
 create db , user via phpmyadmin ( same as in the var file )
+import database - ask developer
 
 run playbook
 #ansible-playbook qn-stage2-playbook.yml

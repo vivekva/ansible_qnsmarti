@@ -4,3 +4,5 @@ manager_password: admin123
 db_user: tomee-user
 db_password: tomee@123
 dB_name: qnsmart_i_db
+domain: qntech.ipsrtraining.com
+mailid: vivek.va@ipsrsolutions.com
