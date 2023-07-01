@@ -59,8 +59,10 @@ sh /opt/tomee/bin/startup.sh
 ansible-playbook qn-stage2-playbook.yml
 ```
 
-## run playboook <br /> 
-#ansible-playbook qn-ssl-playbook.yml <br />
+## run playboook
+```
+ansible-playbook qn-ssl-playbook.yml
+````
 
 ## edit property files in the app 
 
