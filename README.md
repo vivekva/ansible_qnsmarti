@@ -9,6 +9,7 @@ apt update
 ```
 apt install ansible
 ```
+```
 ansible --version
 ```
 
