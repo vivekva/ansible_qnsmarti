@@ -70,5 +70,6 @@ image <br />
 mail details <br />
 license detailes <br />
 WEB-INF/classes/com/ipsr/email/notification/conf.properties <br />
+QnLive/WEB-INF/classes/com/ipsr/email/notification/ <br />
 college name and other display info <br />
 image upload location  ( same as in the server.xml  - should be end with slash /) <br /> 
