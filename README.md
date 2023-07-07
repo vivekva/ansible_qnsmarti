@@ -69,5 +69,6 @@ ansible-playbook qn-ssl-playbook.yml
 image <br />
 mail details <br />
 license detailes <br />
+WEB-INF/classes/com/ipsr/email/notification/conf.properties <br />
 college name and other display info <br />
 image upload location  ( same as in the server.xml  - should be end with slash /) <br /> 
