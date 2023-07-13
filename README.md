@@ -27,23 +27,23 @@ ansible --version
 ```
 ./xampp-linux-x64-8.1.12-0-installer.run
 ```
-## pull this git project to server
+## Pull this git project to the server
 
 ### change variables in the  `var_file.yml` according to client
 
-## run playbook 
+## Run playbook 
 ```
 ansible-playbook qn-playbook.yml
 ````
 
 check xampp using public ip <br />
 check tomee with ip:8080 <br />
-create `database`  `username` and it's `password`  via phpmyadmin ( same as in the var file ) <br />
+create `database`  `username` and its `password`  via PHPMyAdmin ( same as in the var file ) <br />
 import database - ask developer <br />
-copy war file to `/opt/tomee/webapps` <br />
-check app with ip:8080/buildname
+copy the war file to `/opt/tomee/webapps` <br />
+check the app with ip:8080/buildname
 
-### restart tomee service if needed
+### Restart tomee service if needed
 ```
 sh /opt/tomee/bin/shutdown.sh
 ```
@@ -51,22 +51,22 @@ sh /opt/tomee/bin/shutdown.sh
 sh /opt/tomee/bin/startup.sh
 ```
 
-## run playbook 
+## Run playbook 
 ```
 ansible-playbook qn-stage2-playbook.yml
 ```
 
-## run playboook
+## run playbook
 ```
 ansible-playbook qn-ssl-playbook.yml
 ````
 
-## edit property files in the app 
+## Edit property files in the app 
 
 image <br />
 mail details <br />
-license detailes <br />
+license details <br />
 WEB-INF/classes/com/ipsr/email/notification/conf.properties <br />
 QnLive/WEB-INF/classes/com/ipsr/email/notification/ <br />
 college name and other display info <br />
-image upload location  ( same as in the server.xml  - should be end with slash /) <br /> 
+image upload location  ( same as in the server.xml  - should end with slash /) <br /> 
