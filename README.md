@@ -70,3 +70,10 @@ WEB-INF/classes/com/ipsr/email/notification/conf.properties <br />
 QnLive/WEB-INF/classes/com/ipsr/email/notification/ <br />
 college name and other display info <br />
 image upload location  ( same as in the server.xml  - should end with slash /) <br /> 
+
+vim/opt/lampp/etc/my.cnf <br />
+Add the following: <br />
+
+max_connections = 500 <br />
+interactive_timeout=60 <br />
+wait_timeout=60 <br />
